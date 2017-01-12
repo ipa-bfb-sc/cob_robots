@@ -14,6 +14,8 @@ set(robotlist
   cob4-4
   cob4-5
   cob4-6
+  cob4-7
+  cob4-10
   raw3-1
   raw3-2
   raw3-3
@@ -34,6 +36,6 @@ install(DIRECTORY launch
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
-install(PROGRAMS src/fake_diagnostics.py src/gazebo_services.py src/gazebo_topics.py
+install(PROGRAMS src/fake_diagnostics.py src/fake_monitoring.py src/gazebo_services.py src/gazebo_topics.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}/src
 )

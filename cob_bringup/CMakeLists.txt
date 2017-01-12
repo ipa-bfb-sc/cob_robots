@@ -15,6 +15,8 @@ set(robotlist
   cob4-4
   cob4-5
   cob4-6
+  cob4-7
+  cob4-10
   raw3-1
   raw3-2
   raw3-3
@@ -23,23 +25,11 @@ set(robotlist
   raw3-6
 )
 
-set(envlist
-  empty
-  ipa-kitchen
-  ipa-apartment
-  ipa-factory
-)
-
 ### TEST ###
 if(CATKIN_ENABLE_TESTING)
   foreach(robot ${robotlist})
-    foreach(env ${envlist})
-      message("testing for robot: ${robot} in env: ${env}")
-      #roslaunch_add_file_check(tools robot:=${robot} robot_env:=${env})
-      #roslaunch_add_file_check(tools ROBOT=${robot} ROBOT_ENV=${env})
-      #roslaunch_add_file_check(robots/${robot}.xml robot_env:=${env})
-      roslaunch_add_file_check(robots/${robot}.xml ROBOT_ENV=${env})
-    endforeach()
+    message("testing for robot: ${robot}")
+    roslaunch_add_file_check(robots/${robot}.xml)
   endforeach()
 endif()
 
