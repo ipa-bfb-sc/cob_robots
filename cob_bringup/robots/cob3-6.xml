@@ -58,42 +58,61 @@
 			<arg name="sim" value="$(arg sim)"/>
 		</include>
 
-		<include file="$(find cob_bringup)/drivers/base_driver.launch" >
+		<!--include file="$(find cob_bringup)/drivers/base_driver.launch" >
 			<arg name="robot" value="$(arg robot)" />
 		</include>
 		<include file="$(find cob_bringup)/controllers/base_controller.launch" >
 			<arg name="robot" value="$(arg robot)" />
+		</include-->
+		
+		<include file="$(find cob_bringup)/components/legacy_base.launch">
+			<arg name="robot" value="$(arg robot)"/>
+			<arg name="sim" value="$(arg sim)"/>
 		</include>
 		<include file="$(find cob_bringup)/tools/base_collision_observer.launch" >
 			<arg name="robot" value="$(arg robot)" />
 		</include>
 
 		<!-- upper robot -->
-		<include file="$(find cob_bringup)/drivers/canopen_402.launch" >
+		<include file="$(find cob_bringup)/components/canopen_generic.launch">
+			<arg name="robot" value="$(arg robot)"/>
+			<arg name="component_name" value="torso"/>
+			<arg name="can_device" value="can2"/>
+			<arg name="sim" value="$(arg sim)"/>
+		</include>
+		
+		<!--include file="$(find cob_bringup)/drivers/canopen_402.launch" >
 			<arg name="robot" value="$(arg robot)" />
 			<arg name="component_name" value="torso" />
 			<arg name="can_device" value="can2" />
 			<arg name="interval_ms" value="10" />
 			<arg name="use_external_sync" value="true"/>
 			<arg name="start_external_sync" value="true"/>
-		</include>
-		<include file="$(find cob_bringup)/controllers/generic_controller.launch">
+		</include-->
+		<!--include file="$(find cob_bringup)/controllers/generic_controller.launch">
 			<arg name="robot" value="$(arg robot)"/>
 			<arg name="component_name" value="torso"/>
-		</include>
+		</include-->
 
-		<include file="$(find cob_bringup)/drivers/schunk_powercube_chain_driver.launch" >
+		<!-- ARM -->
+		<include file="$(find cob_bringup)/components/legacy_schunk_powercube.launch">
+			<arg name="robot" value="$(arg robot)"/>
+			<arg name="component_name" value="arm" />
+			<arg name="sim" value="$(arg sim)"/>
+		</include>
+		<!--include file="$(find cob_bringup)/drivers/schunk_powercube_chain_driver.launch" >
 			<arg name="robot" value="$(arg robot)" />
 			<arg name="component_name" value="arm" />
 		</include>
 		<include file="$(find cob_bringup)/controllers/cob_trajectory_controller.launch" >
 			<arg name="robot" value="$(arg robot)" />
 			<arg name="component_name" value="arm" />
-		</include>
+		</include-->
 
 		<!--include file="$(find cob_bringup)/drivers/schunk_sdh.launch" >
 			<arg name="robot" value="$(arg robot)" />
 		</include-->
+		
 		<include file="$(find cob_bringup)/drivers/head_axis.launch" >
 			<arg name="robot" value="$(arg robot)" />
 		</include>
@@ -132,18 +151,23 @@
 			</include>
 		</group>
 
-		<include file="$(find cob_bringup)/drivers/canopen_402.launch" >
+		<include file="$(find cob_bringup)/components/canopen_generic.launch">
+			<arg name="robot" value="$(arg robot)"/>
+			<arg name="component_name" value="tray"/>
+			<arg name="can_device" value="can1"/>
+			<arg name="sim" value="$(arg sim)"/>
+		</include>
+
+		<!--include file="$(find cob_bringup)/drivers/canopen_402.launch" >
 			<arg name="robot" value="$(arg robot)" />
 			<arg name="component_name" value="tray" />
 			<arg name="can_device" value="can1" />
-			<arg name="interval_ms" value="10" />
-			<arg name="use_external_sync" value="10"/>
-			<arg name="start_external_sync" value="1"/>			
+
 		</include>
 		<include file="$(find cob_bringup)/controllers/generic_controller.launch">
 			<arg name="robot" value="$(arg robot)"/>
 			<arg name="component_name" value="tray"/>
-		</include>
+		</include-->
 
 		<!-- start camera sensors -->
 		<include file="$(find cob_bringup)/drivers/prosilica.launch" >
@@ -173,6 +197,7 @@
 		<!--include file="$(find cob_bringup)/drivers/light.launch" >
 			<arg name="robot" value="$(arg robot)" />
 			<arg name="component_name" value="light" />
+			<arg name="sim_enabled" value="true"/>
 		</include-->
 
 		<include file="$(find cob_bringup)/drivers/tray_sensors.launch" >

@@ -1,0 +1,32 @@
+joint_names: ["arm_1_joint","arm_2_joint","arm_3_joint","arm_4_joint","arm_5_joint","arm_6_joint","arm_7_joint"]
+action_name: /arm/joint_trajectory_controller/follow_joint_trajectory
+service_ns: /arm/driver
+default_vel: 0.3
+
+# back side positions
+home: [[0.0,0.0,0.0,0.0,0.0,0.0,0.0]]
+gazhome: [[0.0,-0.6,0.0,-0.9,0.0,-0.7,0.0]]
+pre-to-tray: [[0.0,-1.2,0.8,0.4,0.0,-0.7,0.0]]
+to-tray: [[-0.8,-1.8,2.4,0.7,0.0,-0.3,0.0]]
+
+
+folded: [[2.43, -1.77, 3.2, 0.7, 0.16, 1, 0]]
+pregrasp: [[-1.8,0.2,0.6,0.4,-0.8,0.5,0]]
+hold: [[2.9, -1.62, 2.84, 1.96, -0.72, 1.78, 0]]
+pre_look_at_table: [[2.6,-1.5,2.5,0.4,-0.4,1.3,0]]
+look_at_table: [[3, -0.4, 3, 0.73, 0, 1, 0]]
+
+# front side positions
+#overtray: [[-1.1, -1.1, 2.1, 1.26, 0, 1.36, 0]]
+#intermediateback: [[2.2, -1, 1.87, 1.9, -0.8, 1.8, 0]]
+#intermediatefront: [[-0.17, -0.43, 1.78, 1.9, -0.5, 0.84, 0]]
+wavein: [[-0.1, 0.5, 0.0, 0.5, 0.0, 0.5, 0]]
+waveout: [[-0.1, 0.5, 0.0, -1.2, 0.0, -0.5, 0]]
+
+# trajectories
+#folded-to-look_at_table: [pre_look_at_table,look_at_table]
+#look_at_table-to-folded: [pre_look_at_table,folded]
+grasp-to-tray: [gazhome, pregrasp,pre-to-tray, to-tray]
+#tray-to-folded: [intermediatefront, intermediateback, folded]
+wave: [waveout, wavein, waveout, wavein]
+move-to-tray: [gazhome, pre-to-tray, to-tray]
