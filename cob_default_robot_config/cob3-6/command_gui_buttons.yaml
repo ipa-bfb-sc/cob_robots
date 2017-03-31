@@ -54,6 +54,7 @@ group6:
   group_name: arm traj
   component_name: arm
   buttons: [[stop,stop],
+    [pregrasp,move,pregrasp],
     [move-to-tray,move,move-to-tray],
     [folded-to-look at table,move,folded-to-look_at_table],
     [look_at_table-to-folded,move,look_at_table-to-folded],
